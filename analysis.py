@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import torch
 from torch.utils.data import DataLoader, TensorDataset
@@ -34,6 +35,7 @@ def run_analysis_sudoku(trainer, device, test_iters=None, datasets=None):
 
         # Convert the results list into a DataFrame
         results_df = pd.DataFrame(results_list)
+        os.makedirs("results", exist_ok=True)
         results_df.to_csv(f"results/{trainer.model_name}")
 
 
@@ -91,6 +93,7 @@ def run_analysis_graph_coloring(trainer, colors, vertices_counts, candidate_pool
 
         results_df = pd.DataFrame(results_list)
 
+        os.makedirs("results", exist_ok=True)
         results_df.to_csv(f"results/{trainer.model_name}_{candidate_pool}")
 
 
@@ -126,6 +129,7 @@ def run_analysis_nurse_scheduling(trainer, nurses):
             })
 
         results_df = pd.DataFrame(results_list)
+        os.makedirs("results", exist_ok=True)
         results_df.to_csv(f"results/{trainer.model_name}")
 
 def run_analysis_CUT_GSET(trainer, candidate_pool=1):
@@ -241,5 +245,6 @@ def run_analysis_CUT_GSET(trainer, candidate_pool=1):
         })
 
     results_df = pd.DataFrame(results_list)
+    os.makedirs("maxcut/results", exist_ok=True)
     results_df.to_csv(f"maxcut/results/{trainer.model_name}_pool{candidate_pool}")
 

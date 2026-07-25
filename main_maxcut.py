@@ -20,8 +20,7 @@ def parse_args():
     parser.add_argument("--batch-size", type=int, default=512, required=False)
     parser.add_argument("--epochs", type=int, default=3000, required=False)
     parser.add_argument("--dropout", type=float, default=0.1, required=False)
-    parser.add_argument("--optimizer", type=str, choices=["RMSprop", "Adam", "AdamW"],
-                        default="AdamW", required=False)
+    parser.add_argument("--optimizer", type=str, choices=["RMSprop", "Adam", "AdamW"], default="AdamW", required=False)
     parser.add_argument("--learning-rate", type=float, default=0.0001, required=False)
     parser.add_argument("--threshold", help="subset selection threshold",
                         #  0.7 means ~30% of variables will be included in the subset

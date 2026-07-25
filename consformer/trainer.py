@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import time
+import os
 
 from torch import optim
 from torch import Tensor
@@ -172,6 +173,7 @@ class Trainer:
         """
         best_test_loss = float("inf")
         training_start_time = time.time()
+        os.makedirs("./saved_models", exist_ok=True)
         for epoch in range(1, self.num_epochs + 1):
             print(f"\nEpoch {epoch}/{self.num_epochs}")
             train_loss, train_metrics = self._run_epoch_iter(self.train_loader, 'training', 1)
